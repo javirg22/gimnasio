@@ -1,0 +1,88 @@
+/* styles.css - Estilos principales de TechShop */
+
+/* Colores y tipografía */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #131921; /* Color de fondo similar al de Amazon */
+    color: white;
+    padding: 10px 0;
+}
+
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 20px;
+    background-color: #232f3e;
+}
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-top-left, .header-top-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-link {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.header-link:hover {
+    text-decoration: underline;
+}
+
+.header-main {
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+/* Estilo general de botones */
+button {
+    background-color: #ff9900; /* Color de fondo para botones */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #e68900; /* Color de fondo al pasar el mouse */
+}

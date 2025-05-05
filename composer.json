@@ -1,0 +1,25 @@
+{
+    "name": "techshop/backend",
+    "description": "Backend de la tienda online TechShop",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "firebase/php-jwt": "^6.11",
+        "google/apiclient": "^2.0",
+        "monolog/monolog": "^3.4",
+        "phpmailer/phpmailer": "^6.8",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TechShop\\": "backend/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "start": "php -S localhost:8000 -t backend"
+    }
+}

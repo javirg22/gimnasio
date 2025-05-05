@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Redirigir todas las solicitudes a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1 [L,QSA]
+
+# Habilitar CORS
+Header Set Access-Control-Allow-Origin "*"
+Header Set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+Header Set Access-Control-Allow-Headers "Content-Type, Authorization"
+
+# Proteger archivos sensibles
+<FilesMatch "\.(env|json|log|ini|phar|sql)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Configuración de errores personalizados
+ErrorDocument 404 /public/404.html

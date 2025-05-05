@@ -1,0 +1,11 @@
+<?php
+class Logger {
+    private static $logFile = '../../logs/errors.log';
+
+    public static function log($message) {
+        $date = date('Y-m-d H:i:s');
+        $logMessage = "[$date] $message" . PHP_EOL;
+        
+        file_put_contents(self::$logFile, $logMessage, FILE_APPEND | LOCK_EX);
+    }
+}

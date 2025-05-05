@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .producto-carrito {
+            margin-bottom: 20px;
+        }
+        .producto-carrito img {
+            max-width: 100px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a TechShop</h1>
+        <nav>
+            <ul>
+                <li><a href="productos.html">Productos</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+                <li><a href="checkout.html">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Carrito de Compras</h1>
+    <div id="carrito-contenedor"></div>
+    <h3 id="total-carrito">Total: $0</h3>
+    <button onclick="vaciarCarrito()">Vaciar Carrito</button>
+    <button onclick="realizarCompra()">Realizar Compra</button>
+   
+    <!-- Incluir el archivo cart.js -->
+    <script src="../assets/js/cart.js"></script>
+    
+</body>
+</html>
