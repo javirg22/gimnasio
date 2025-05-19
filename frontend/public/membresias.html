@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Membresías</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <h2>Membresía</h2>
+    <button onclick="apuntarse()">Apuntarse</button>
+    <button onclick="renovar()">Renovar</button>
+
+    <script>
+        const token = localStorage.getItem("token");
+
+        async function apuntarse() {
+            const res = await fetch("/api/membresias/apuntarse.php", {
+                method: "POST",
+                headers: { "Authorization": token }
+            });
+            const data = await res.json();
+            alert(data.message || data.error);
+        }
+
+        async function renovar() {
+            const res = await fetch("/api/membresias/renovar.php", {
+                method: "POST",
+                headers: { "Authorization": token }
+            });
+            const data = await res.json();
+            alert(data.message || data.error);
+        }
+    </script>
+</body>
+</html>
