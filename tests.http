@@ -1,0 +1,107 @@
+### REGISTRO EXITOSO
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+  "username": "juan",
+  "email": "juan@example.com",
+  "password": "123456"
+}
+
+### REGISTRO CON EMAIL YA USADO
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+  "username": "juan2",
+  "email": "juan@example.com",
+  "password": "abcdef"
+}
+
+### REGISTRO CON CAMPOS VACÍOS
+POST http://localhost:8000/api/register
+Content-Type: application/json
+
+{
+  "username": "",
+  "email": "",
+  "password": ""
+}
+
+### LOGIN EXITOSO
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+  "email": "juan@example.com",
+  "password": "123456"
+}
+
+### LOGIN CON CONTRASEÑA INCORRECTA
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+  "email": "juan@example.com",
+  "password": "wrongpass"
+}
+
+### LOGIN CON EMAIL NO REGISTRADO
+POST http://localhost:8000/api/login
+Content-Type: application/json
+
+{
+  "email": "fakeuser@example.com",
+  "password": "cualquiera"
+}
+
+### OBTENER TODOS LOS PRODUCTOS (SIN TOKEN)
+GET http://localhost:8000/api/productos
+
+### OBTENER PRODUCTOS CON FILTRO (opcional)
+GET http://localhost:8000/api/productos?categoria=proteinas
+
+### AGREGAR PRODUCTO AL CARRITO (con JWT válido)
+POST http://localhost:8000/api/carrito
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "producto_id": 1,
+  "cantidad": 2
+}
+
+### AGREGAR PRODUCTO INEXISTENTE AL CARRITO
+POST http://localhost:8000/api/carrito
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "producto_id": 9999,
+  "cantidad": 1
+}
+
+### VER CARRITO DEL USUARIO
+GET http://localhost:8000/api/carrito
+Authorization: Bearer {{jwt}}
+
+### VACIAR CARRITO
+DELETE http://localhost:8000/api/carrito
+Authorization: Bearer {{jwt}}
+
+### CHECKOUT (SIMULADO)
+POST http://localhost:8000/api/checkout
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+{
+  "metodo_pago": "paypal"
+}
+
+### CHECKOUT SIN TOKEN
+POST http://localhost:8000/api/checkout
+Content-Type: application/json
+
+{
+  "metodo_pago": "paypal"
+}
