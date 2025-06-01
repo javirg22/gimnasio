@@ -1,19 +1,26 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const saludoUsuario = document.getElementById("saludo-usuario");
-    const btnLogin = document.getElementById("btn-login");
-    const btnLogout = document.getElementById("btn-logout");
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
 
-    const usuario = JSON.parse(localStorage.getItem("usuario"));
+  let saludo = "Hola invitado";
 
-    if (usuario && usuario.nombre) {
-        saludoUsuario.textContent = `Hola, ${usuario.nombre}`;
-        btnLogin.style.display = "none";
-        btnLogout.style.display = "inline";
+  if (token) {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const userId = payload.userId;
+
+      const response = await fetch(`http://localhost:8001/backend/api/v1/saludo/saludo.php?id=${userId}`);
+      const data = await response.json();
+
+      if (data && data.name) {
+        saludo = `Hola ${data.name}`;
+      }
+    } catch (error) {
+      console.error("Error al obtener el usuario:", error);
     }
+  }
 
-    btnLogout.addEventListener("click", (e) => {
-        e.preventDefault();
-        localStorage.removeItem("usuario");
-        location.reload(); // recarga para actualizar la interfaz
-    });
+  const saludoElemento = document.getElementById("saludo");
+  if (saludoElemento) {
+    saludoElemento.textContent = saludo;
+  }
 });

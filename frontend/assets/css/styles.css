@@ -1,4 +1,3 @@
-/* styles.css - Estilos principales de TechShop */
 
 /* Colores y tipografía */
 body {
@@ -85,4 +84,54 @@ button {
 
 button:hover {
     background-color: #e68900; /* Color de fondo al pasar el mouse */
+}#busqueda {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    width: 60%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
+#productos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.producto-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.producto-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.botones-membresia {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.botones-membresia button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+

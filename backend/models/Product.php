@@ -24,16 +24,21 @@ class Product {
     // Crear un nuevo producto
     public function createProduct($name, $description, $price, $image_url) {
         $query = "INSERT INTO " . $this->table_name . " 
-                  (nombre, descripcion, precio, imagen) 
-                  VALUES (?, ?, ?, ?)";
+                  (nombre, descripcion, precio, , imagen) 
+                  VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $name);
         $stmt->bindParam(2, $description);
         $stmt->bindParam(3, $price);
-        $stmt->bindParam(4, $image_url);
+        
+        $stmt->bindParam(5, $image_url);
 
         return $stmt->execute();
     }
+
+    
+
 }
 ?>
+
 

@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <title>Membresías</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        h2,p{
+            text-align: center;
+        }
+        
+    </style>
 </head>
 <body>
+    <header>
+     <div class="header-main">
+      <h1>Membresias</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="membresias.html">apuntate</a></li>
+          <li><a href="clase.html">clases</a></li>
+        </ul>
+      </nav>
+    </div>
+    </header>
     <h2>Membresía</h2>
-    <button onclick="apuntarse()">Apuntarse</button>
-    <button onclick="renovar()">Renovar</button>
+    <script src="../assets/js/membresias.js"></script>
+    <div id="estado-membresia"></div>
+<section>
+  <h2>Nuestras Membresías</h2>
+  <p>
+    Todas nuestras membresías incluyen acceso a nuestras instalaciones, asesoramiento profesional, duchas, taquillas y zona de cardio. Además, puedes complementar tu experiencia con suplementos, accesorios y clases especiales disponibles en nuestra tienda.
+  </p>
+  <p>
+    ¡Únete a nuestra comunidad fitness y alcanza tus metas con el mejor ambiente y el mejor equipo!
+  </p>
+</section>
 
-    <script>
-        const token = localStorage.getItem("token");
-
-        async function apuntarse() {
-            const res = await fetch("/api/membresias/apuntarse.php", {
-                method: "POST",
-                headers: { "Authorization": token }
-            });
-            const data = await res.json();
-            alert(data.message || data.error);
-        }
-
-        async function renovar() {
-            const res = await fetch("/api/membresias/renovar.php", {
-                method: "POST",
-                headers: { "Authorization": token }
-            });
-            const data = await res.json();
-            alert(data.message || data.error);
-        }
-    </script>
 </body>
 </html>

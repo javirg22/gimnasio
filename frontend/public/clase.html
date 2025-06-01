@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clases - Gimnasio</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .clase-item {
+            background-color: white;
+            border: 1px solid #000000;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 6px #000000;
+        }
+        .clase-item h3 {
+            margin-top: 0;
+        }
+        .clase-item p {
+            margin: 6px 0;
+        }
+        .btn-reservar {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-reservar:hover {
+            background-color: #218838;
+        }
+        .error, .success {
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+        .success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="header-main">
+        <h1>Reserva tus clases de gimnasio</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="membresias.html">apuntate</a></li>
+        </ul>
+      </nav>
+    </div>
+    </header>
+    <div id="clases-lista">
+        <!-- Aquí se cargarán las clases dinámicamente -->
+    </div>
+
+    <script src="../assets/js/clases.js"></script>
+</body>
+</html>

@@ -17,9 +17,9 @@ $product = new Product($db);
 // Se obtiene el ID del producto desde la URL (parámetro GET)
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0; // Convierte el ID a un número entero
 if ($id <= 0) {
-    echo json_encode(["error" => "ID de producto no válido"]); // Devuelve error si el ID no es válido
-    http_response_code(400); // Código de error 400 (Bad Request)
-    exit; // Termina la ejecución del script
+    echo json_encode(["error" => "ID de producto no válido"]);
+    http_response_code(400);
+    exit;
 }
 
 // Se obtiene el método HTTP de la solicitud
@@ -28,37 +28,45 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'GET') {
     // Si el método es GET, se intenta obtener la información del producto
     if ($product->getAllProducts($id)) {
-        echo json_encode($product); // Devuelve el producto en formato JSON
-        http_response_code(200); // Código de éxito 200 (OK)
+        $response = [
+            "id" => $product->$id,
+            "name" => $product->$name,
+            "description" => $product->$description,
+            "price" => $product->$price,
+            "image_url" => $product->$image_url
+        ];
+        echo json_encode($response);
+        http_response_code(200);
     } else {
-        echo json_encode(["error" => "Producto no encontrado"]); // Devuelve error si no se encuentra el producto
-        http_response_code(404); // Código de error 404 (Not Found)
+        echo json_encode(["error" => "Producto no encontrado"]);
+        http_response_code(404);
     }
 } elseif ($method === 'PUT') {
     // Si el método es PUT, se espera actualizar un producto
-
-    // Se obtiene el cuerpo de la solicitud en formato JSON
     $data = json_decode(file_get_contents("php://input"));
 
     // Verifica si se recibieron los datos necesarios
-    if (!isset($data->name) || !isset($data->price) || !isset($data->description)) {
-        echo json_encode(["error" => "Faltan datos obligatorios"]); // Devuelve error si faltan datos
-        http_response_code(400); // Código de error 400 (Bad Request)
+    if (!isset($data->name) || !isset($data->price) || !isset($data->description) || !isset($data->stock) || !isset($data->image_url)) {
+        echo json_encode(["error" => "Faltan datos obligatorios"]);
+        http_response_code(400);
         exit;
     }
 
-    // Se asignan los valores del producto desde la solicitud
-    $product->$name = $data->name;
-    $product->$price = $data->price;
-    $product->$description = $data->description;
+    // Asignación de propiedades
+    $name = $data->name;
+    $price = $data->price;
+    $description = $data->description;
+    $stock = $data->stock;
+    $image_url = $data->image_url;
 
-    // Se intenta actualizar el producto en la base de datos
-    if ($product->createProduct($id, $name, $description, $price, $stock)) {
-        echo json_encode(["message" => "Producto actualizado con éxito"]); // Devuelve mensaje de éxito
-        http_response_code(200); // Código de éxito 200 (OK)
+    // Se intenta actualizar el producto
+    if ($product->createProduct($id, $name, $description, $price, $stock, $image_url)) {
+        echo json_encode(["message" => "Producto actualizado con éxito"]);
+        http_response_code(200);
     } else {
-        echo json_encode(["error" => "Error al actualizar el producto"]); // Devuelve error si no se pudo actualizar
-        http_response_code(500); // Código de error 500 (Internal Server Error)
+        echo json_encode(["error" => "Error al actualizar el producto"]);
+        http_response_code(500);
     }
 }
+
 

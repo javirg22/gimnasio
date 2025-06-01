@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechShop - Productos</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        header,h2{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,13 +20,14 @@
                 <li><a href="login.html">Iniciar Sesión</a></li>
                 <li><a href="checkout.html">Carrito</a></li>
                 <li><a href="membresias.html">apuntate</a></li>
-                <li><a href="reservar clase.html">clases</a></li>
+                <li><a href="clase.html">clases</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="productos">
             <h2>Explora nuestros productos</h2>
+            <input type="text" id="busqueda" placeholder="Buscar productos...">
             <div id="productos-lista">
                 <!-- Los productos se cargarán aquí dinámicamente -->
             </div>

@@ -10,21 +10,24 @@ if (!isset($headers['Authorization'])) {
     exit;
 }
 
-$user_id = verifyJWT($headers['Authorization']);
-if (!$user_id) {
-    echo json_encode(["error" => "Token inválido"]);
+$datosUsuario = verifyJWT($headers['Authorization']);
+if (!$datosUsuario || !isset($datosUsuario['userId'])) {
+    echo json_encode(["error" => "Token inválido o ID no encontrado"]);
     exit;
 }
+
+$user_id = $datosUsuario['userId']; // Aquí coges el ID correctamente
 
 try {
     $db = new Database();
     $pdo = $db->getConnection();
 
     // Extiende la fecha_fin un mes más desde la actual
-    $stmt = $pdo->prepare("UPDATE membresias SET fecha_fin = DATE_ADD(fecha_fin, INTERVAL 1 MONTH) WHERE user_id = ?");
+    $stmt = $pdo->prepare("UPDATE membresias SET fecha_fin = DATE_ADD(fecha_fin, INTERVAL 1 MONTH) WHERE id_usuario = ?");
     $stmt->execute([$user_id]);
 
     echo json_encode(["message" => "Membresía renovada"]);
 } catch (PDOException $e) {
     echo json_encode(["error" => "Error al renovar membresía: " . $e->getMessage()]);
 }
+

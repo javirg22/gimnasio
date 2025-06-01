@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Checkout - TechShop</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <script defer src="../assets/js/checkout.js"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+
+    <!-- SDK de PayPal -->
+    <script defer src="https://www.paypal.com/sdk/js?client-id=ASsCJeFzYVTlQW6t8UA5Q4OE-vnhGKpMdZaAIxOgaAGsqA0Tqo-SdpbQfX-I7_UImPwPDblOnjUkxwLJ&currency=EUR"></script>
+
+    <!-- Script de pago unificado -->
+    <script defer src="../assets/js/pago.js"></script>
 </head>
 <body>
     <h1>Resumen del Pedido</h1>
-    <h3 id="total-pago">Total a pagar: $0</h3>
-    <div id="resumen-pedido"></div>
+
+    <div id="resumen-pedido">
+        <!-- Aquí se carga dinámicamente la membresía o los productos del carrito -->
+    </div>
+
+    <p id="total-pago"></p>
+
     <h2>Información de Envío</h2>
     <form id="form-envio">
         <label for="nombre">Nombre Completo:</label>
-        <input type="text" id="nombre" required><br><br>
-        
+        <input type="text" id="nombre" required /><br /><br />
+
         <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" required><br><br>
-        
+        <input type="text" id="direccion" required /><br /><br />
+
         <label for="ciudad">Ciudad:</label>
-        <input type="text" id="ciudad" required><br><br>
+        <input type="text" id="ciudad" required /><br /><br />
 
         <label for="codigo-postal">Código Postal:</label>
-        <input type="text" id="codigo-postal" required><br><br>
+        <input type="text" id="codigo-postal" required /><br /><br />
+
+        <!-- Aquí se insertará dinámicamente el input de descuento si aplica -->
 
         <button type="submit">Continuar con el Pago</button>
     </form>
 
-    <div id="form-pago-container" style="display: none;">
-        <h2>Detalles de Pago</h2>
-        <form id="form-pago">
-            <label for="tarjeta">Número de Tarjeta:</label>
-            <input type="text" id="tarjeta" required><br><br>
-
-            <label for="vencimiento">Fecha de Vencimiento:</label>
-            <input type="text" id="vencimiento" placeholder="MM/YY" required><br><br>
-
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" required><br><br>
-
-            <button type="submit">Pagar</button>
-        </form>
+    <div id="paypal-container" style="display: none;">
+        <h2>Pago con PayPal</h2>
+        <div id="paypal-button-container"></div>
     </div>
 </body>
 </html>
+
+

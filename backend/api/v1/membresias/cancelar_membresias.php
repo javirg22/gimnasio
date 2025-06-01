@@ -16,18 +16,17 @@ if (!$datosUsuario || !isset($datosUsuario['userId'])) {
     exit;
 }
 
-$user_id = $datosUsuario['userId']; // Aquí coges el ID correctamente
+$user_id = $datosUsuario['userId'];
 
 try {
     $db = new Database();
     $pdo = $db->getConnection();
 
-    // Insertar o actualizar membresía activa
-    $stmt = $pdo->prepare("REPLACE INTO membresias (id_usuario, fecha_inicio, fecha_fin) VALUES (?, NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH))");
+    // Eliminar membresía
+    $stmt = $pdo->prepare("DELETE FROM membresias WHERE id_usuario = ?");
     $stmt->execute([$user_id]);
 
-    echo json_encode(["message" => "Membresía activada o renovada"]);
+    echo json_encode(["message" => "Membresía cancelada"]);
 } catch (PDOException $e) {
-    echo json_encode(["error" => "Error al activar membresía: " . $e->getMessage()]);
+    echo json_encode(["error" => "Error al cancelar membresía: " . $e->getMessage()]);
 }
-
