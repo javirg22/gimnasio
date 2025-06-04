@@ -8,6 +8,10 @@ header('Content-Type: application/json'); // Especifica que la respuesta será e
 header("Access-Control-Allow-Origin: *"); // Permite el acceso desde cualquier origen (CORS habilitado)
 header("Access-Control-Allow-Methods: GET, PUT, DELETE"); // Permite los métodos GET, PUT y DELETE
 header("Access-Control-Allow-Headers: Content-Type"); // Permite el envío de datos en formato JSON
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
 
 // Se instancia la conexión a la base de datos y la clase Product
 $database = new Database();

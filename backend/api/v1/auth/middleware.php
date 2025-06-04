@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/../../auth.php';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 function verificarAutenticacion() {
     $headers = getallheaders();

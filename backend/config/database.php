@@ -1,10 +1,13 @@
 <?php
 // Configuración de la base de datos
-$host = '127.0.0.1'; // O la IP de tu servidor MySQL
-$dbname = 'gymrat'; // Nombre de la base de datos
-$db_user = 'root'; // Nombre de usuario
-$db_password = ''; // Contraseña
+$host = '127.0.0.1'; // O la IP de tu servidor MySQL local
+$dbname = 'gymrat'; // Nombre de la base de datos local
+$db_user = 'root'; // Nombre de usuario local
+$db_password = ''; // Contraseña local
 $charset = 'utf8mb4';
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 // Clase Database
 class Database {

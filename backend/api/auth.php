@@ -3,6 +3,11 @@ require __DIR__ . '/../../vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+
 class Auth {
     private static $secret_key = "tu_clave_secreta"; // Cambia esto por una clave segura
     private static $algorithm = "HS256";

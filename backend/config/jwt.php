@@ -3,6 +3,9 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key; // Necesario para decodificación en versiones nuevas
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 // Clave secreta para la firma del JWT (manténla segura)
 $key = "tu_clave_secreta";
