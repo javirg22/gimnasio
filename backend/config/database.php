@@ -24,21 +24,37 @@ class Database {
     private $db_password;
     private $charset = 'utf8mb4';
     private $pdo;
+    private $port;
 
-    public function __construct() {
-        // Cargar variables de entorno, o valores por defecto para local
+
+   public function __construct() {
+    $jawsdb_url = getenv('JAWSDB_URL');
+
+    if ($jawsdb_url) {
+        $dbparts = parse_url($jawsdb_url);
+
+        $this->host = $dbparts['host'];
+        $this->db_user = $dbparts['user'];
+        $this->db_password = $dbparts['pass'];
+        $this->dbname = ltrim($dbparts['path'], '/');
+        $this->port = $dbparts['port'] ?? 3306;
+    } else {
+        // Variables para local u otro entorno
         $this->host = getenv('DB_HOST') ?: '127.0.0.1';
         $this->dbname = getenv('DB_DATABASE') ?: 'gymrat';
         $this->db_user = getenv('DB_USERNAME') ?: 'root';
         $this->db_password = getenv('DB_PASSWORD') ?: '';
+        $this->port = 3306;
     }
-
+}
     // Método para obtener la conexión
     public function getConnection() {
         if ($this->pdo === null) {
             try {
                 // El DSN completo para MySQL
-                $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset={$this->charset}";
+                $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname};charset={$this->charset}";
+
+               // $dsn = "mysql:host={$this->host};dbname={$this->dbname};charset={$this->charset}";
 
                 // Opciones de conexión
                 $options = [
