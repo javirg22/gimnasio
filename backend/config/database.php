@@ -44,7 +44,7 @@ class Database {
         $this->dbname = getenv('DB_DATABASE') ?: 'gymrat';
         $this->db_user = getenv('DB_USERNAME') ?: 'root';
         $this->db_password = getenv('DB_PASSWORD') ?: '';
-        $this->port = 3306;
+        $this->port = getenv('DB_PORT');
     }
 }
     // Método para obtener la conexión
